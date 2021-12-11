@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
-<title>SSM基础框架</title>
+<title>SSMBase基础框架</title>
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -40,7 +40,7 @@
 					<a href="javascript:;" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
-							后台管理系统
+							SSMBase基础框架
 						</small>
 					</a>
 				</div>

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
-<title>SSM基础框架</title>
+<title>SSMBase基础框架</title>
 
 <meta name="description" content="User login page" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -37,7 +37,7 @@
 									<div class="widget-main">
 										<h4 class="header blue lighter bigger">
 											<i class="ace-icon fa fa-coffee green"></i>
-											欢迎使用XXX管理系统
+											欢迎使用SSMBase基础框架
 										</h4>
 										<div class="space-6"></div>
 										<form>

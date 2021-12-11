@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mxt.dao.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.mxt.bean.SysUser">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+        <result column="real_name" jdbcType="VARCHAR" property="realName" />
+        <result column="des" jdbcType="VARCHAR" property="des" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="token" jdbcType="VARCHAR" property="token" />
+        <result column="roleNames" jdbcType="VARCHAR" property="roleNames" />
+    </resultMap>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mxt.bean.SysUser">
+        update sys_user
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null">
+                pwd = #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="des != null">
+                des = #{des,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="token != null">
+                token = #{token,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from sys_user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    <insert id="insert" parameterType="com.mxt.bean.SysUser">
+        insert into sys_user (id, name, pwd, real_name, des, status, icon, email, create_date, phone, token)
+        values (#{id,jdbcType=INTEGER},
+                #{name,jdbcType=VARCHAR},
+                #{pwd,jdbcType=VARCHAR},
+                #{realName,jdbcType=VARCHAR},
+                #{des,jdbcType=VARCHAR},
+                #{status,jdbcType=INTEGER},
+                #{icon,jdbcType=VARCHAR},
+                #{email,jdbcType=VARCHAR},
+                #{createDate,jdbcType=TIMESTAMP},
+                #{phone,jdbcType=VARCHAR},
+                #{token,jdbcType=VARCHAR})
+    </insert>
+    
+    <update id="updateByPrimaryKey" parameterType="com.mxt.bean.SysUser">
+        update sys_user
+        set name        = #{name,jdbcType=VARCHAR},
+            pwd         = #{pwd,jdbcType=VARCHAR},
+            real_name   = #{realName,jdbcType=VARCHAR},
+            des         = #{des,jdbcType=VARCHAR},
+            status      = #{status,jdbcType=INTEGER},
+            icon        = #{icon,jdbcType=VARCHAR},
+            email       = #{email,jdbcType=VARCHAR},
+            create_date = #{createDate,jdbcType=TIMESTAMP},
+            phone       = #{phone,jdbcType=VARCHAR},
+            token       = #{token,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select id,
+               name,
+               pwd,
+               real_name,
+               des,
+               status,
+               icon,
+               email,
+               create_date,
+               phone,
+               token
+        from sys_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <select id="selectAll" resultMap="BaseResultMap">
+        select id,
+               name,
+               pwd,
+               real_name,
+               des,
+               status,
+               icon,
+               email,
+               create_date,
+               phone,
+               token
+        from sys_user
+    </select>
+    
+    <select id="selectByUserAndPwd" resultMap="BaseResultMap" resultType="com.mxt.bean.SysUser">
+        select *
+        from sys_user
+        where name = #{arg0}
+          and pwd = #{arg1}
+    </select>
+    
+    <update id="savePwdUpdate" parameterType="com.mxt.bean.SysUser">
+        update sys_user
+        set pwd = #{pwd}
+        where id = #{id}
+    </update>
+    
+    <update id="setVisible">
+        update sys_user
+        set status = #{status}
+        where id in #{ids}
+    </update>
+    
+    
+    <select id="selectByPara" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select su.*, (select group_concat(name) as roleNames from sys_role where id in(select role_id from sys_user_role
+        where user_id=su.id)) as roleNames
+        from sys_user su
+        where 1 = 1
+        <if test="para!=null">
+            ${para}
+        </if>
+        <if test="orderBy!=null">
+            ${orderBy}
+        </if>
+        <if test="page!=null">
+            ${page}
+        </if>
+    </select>
+    
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(*)
+        from sys_user
+    </select>
+
+</mapper>

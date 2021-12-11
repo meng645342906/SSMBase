@@ -106,7 +106,6 @@
 	        });
 
 	        $("#grid-table").jqGrid({
-	            //url: 'http://trirand.com/blog/phpjqgrid/examples/jsonp/getjsonp.php?callback=?&qwery=longorders',
 	            url : '${basePath}/sys/user/getListData',
 	            mtype : "GET",
 	            datatype : "json",

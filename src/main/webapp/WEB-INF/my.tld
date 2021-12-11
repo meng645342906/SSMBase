@@ -7,7 +7,7 @@
 		<uri>/my-tag</uri>
 		<tag>
 			<name>menu</name>
-			<tag-class>com.dadao.core.util.taglib.MenuTag</tag-class>
+			<tag-class>com.mxt.core.util.taglib.MenuTag</tag-class>
 			<attribute>
 				<name>type</name>
 				<required>false</required>
@@ -16,7 +16,7 @@
 		</tag>
 		<tag>
 			<name>button</name>
-			<tag-class>com.dadao.core.util.taglib.ButtonTag</tag-class>
+			<tag-class>com.mxt.core.util.taglib.ButtonTag</tag-class>
 			<attribute>
 				<name>id</name>
 				<required>false</required>
