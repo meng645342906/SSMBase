@@ -37,7 +37,7 @@ public class SysLogInterceptor extends HandlerInterceptorAdapter {
         String className = handlerMethod.getBean().getClass().getName();
         String methodName = handlerMethod.getMethod().getName();
         
-        if (!methodName.equals("index") && className.equals("com.dadao.controller.IndexController")) {
+        if (!methodName.equals("index") && className.equals("com.mxt.controller.IndexController")) {
             return true;
         }
         
